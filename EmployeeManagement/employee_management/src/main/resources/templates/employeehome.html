@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Student Information</title>
+</head>
+<body>
+<div class="container">
+    <h2>Employee Information</h2>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Employee Details</h5>
+            <p class="card-text"><strong>Id:</strong> <span th:text="${employee.id}">Roll</span></p>
+            <p class="card-text"><strong>Name:</strong> <span th:text="${employee.name}">Name</span></p>
+            <p class="card-text"><strong>Position:</strong> <span th:text="${employee.position}">Age</span></p>
+            <p class="card-text"><strong>Department:</strong> <span th:text="${employee.department}">Department</span></p>
+            <p class="card-text"><strong>Contact:</strong> <span th:text="${employee.contact}">Contact</span></p>
+            <p class="card-text"><strong>Username:</strong> <span th:text="${employee.username}">Username</span></p>
+            <a th:href="@{/employee/edit}" class="btn btn-primary">Edit</a>
+            <form th:action="@{/employee/delete}" method="post" style="display:inline;">
+                <input type="hidden" name="id" th:value="${employee.id}">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
