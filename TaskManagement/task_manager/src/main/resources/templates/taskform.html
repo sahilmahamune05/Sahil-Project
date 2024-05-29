@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="/css/Style.css">
+</head>
+<body>
+	<h1>Task Form</h1>
+	<form th:action="@{/status}"  th:object="${task}" method ="post" >
+		<div>
+			<label for="titel"> Task Title</label> 
+			<input type="text"placeholder="Enter Your Task" name="title" th:field="*{title}">
+			<span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+			<br>
+			<label for="description">Description</label> 
+			<input type="text"placeholder="Enter Task Description" name="description" th:field="*{description}">
+			<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+			<br>
+			<label for="duedate">Due-Date</label> 
+			<input type="date"placeholder="Enter Due Date" name="duedate" th:field="*{duedate}">
+			<br>
+			
+			<div class="radio-container">
+			<label for="satus">Status</label> 
+            <input type="radio" name="satus" id="pending" value="Pending" th:checked="${task.satus=='Pending'}">
+            <label for="pending">Pending</label>
+            <input type="radio" name="satus" id="completed" value="Completed" th:checked="${task.satus=='Completed'}">
+            <label for="completed">Completed</label>
+            <span th:if="${#fields.hasErrors('satus')}" th:errors="*{satus}"></span>
+            </div>
+			<input type="submit">
+			<p th:if="${param.error}">Enter Valid Details</p>
+		</div>
+	</form>
+</body>
+</html>
