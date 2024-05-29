@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+</head>
+<body>
+	<h1>Student Registration</h1>
+	<form th:action="@{/status}"  th:object="${student}" method ="post" >
+		<div>
+			<label for="name">Student Name</label> 
+			<input type="text"placeholder="Enter Your Name" name="name" th:field="*{name}">
+			<span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+			<br>
+			<label for="age">Age</label> 
+			<input type="number"placeholder="Enter Your Age" name="age" th:field="*{age}">
+			<span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
+			<br>
+			<label for="grede">Grade</label> 
+			<input type="text"placeholder="Enter Your Grade" name="grade" th:field="*{grade}">
+			<span th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}"></span>
+			<br>
+			
+			<label for="username">User-name</label> 
+			<input type="text"placeholder="Enter Your User Name" name="username" th:field="*{username}">
+			<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+			<br>
+			<label for="password">Password</label> 
+			<input type="text"placeholder="Enter Your Password" name="password" th:field="*{password}">
+			<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+			<br>
+			
+			<input type="submit">
+			<p th:if="${param.error}">Enter Valid Details</p>
+			<a th:href="@{/studentlogin}">Already Have Account? Login Here</a>
+		</div>
+	</form>
+</body>
+</html>
